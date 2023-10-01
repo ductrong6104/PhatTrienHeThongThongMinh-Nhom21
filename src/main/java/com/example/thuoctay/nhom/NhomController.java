@@ -26,11 +26,6 @@ public class NhomController {
 
     @GetMapping("")
     public ResponseEntity<?> getAll() {
-        try {
-            Thread.sleep(4000);
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
         return ResponseEntity.ok().body(nhomService.getAll());
     }
 
