@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +33,11 @@ public class ThuocController {
     @GetMapping("/page")
     public ResponseEntity<?> getPage(@RequestParam(name = "pageIndex") Integer pageIndex) {
         return ResponseEntity.ok().body(thuocService.getOnePage(pageIndex, 10));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getById(@PathVariable(name = "id") Integer id) {
+        return ResponseEntity.ok().body(thuocService.getById(id));
     }
 
     @GetMapping("/checktenthuoc")

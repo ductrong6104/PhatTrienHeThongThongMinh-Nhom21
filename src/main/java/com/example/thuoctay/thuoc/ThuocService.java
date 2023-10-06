@@ -27,6 +27,14 @@ public class ThuocService {
         return set;
     }
 
+    public ThuocDto getById(Integer id) {
+        ThuocEntity entity = thuocRepo.findById(id).orElse(null);
+        if (entity != null) {
+            return thuocMapper.toDto(entity);
+        }
+        return null;
+    }
+
     public ThuocDto create(ThuocDto dto) {
         ThuocEntity entity = thuocMapper.toEntity(dto);
         entity = thuocRepo.save(entity);

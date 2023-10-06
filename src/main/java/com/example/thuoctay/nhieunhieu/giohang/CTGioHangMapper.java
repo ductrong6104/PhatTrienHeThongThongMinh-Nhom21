@@ -1,39 +1,37 @@
-package com.example.thuoctay.nhieunhieu.duocchat;
+package com.example.thuoctay.nhieunhieu.giohang;
 
 import org.springframework.stereotype.Component;
 
-import com.example.thuoctay.duocchat.DuocChatRepo;
 import com.example.thuoctay.thuoc.ThuocRepo;
+import com.example.thuoctay.giohang.GioHangRepo;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class CTDuocChatMapper {
+public class CTGioHangMapper {
     
     private final ThuocRepo thuocRepo;
-    private final DuocChatRepo duocChatRepo;
+    private final  GioHangRepo gioHangRepo;
 
-     public CTDuocChatDto toDto(CTDuocChatEntity entity){
+     public CTGioHangDto toDto(CTGioHangEntity entity){
         try {
-            return CTDuocChatDto.builder()
+            return CTGioHangDto.builder()
             .id(entity.getId())
-            .idDuocChat(entity.getDuocChat().getId())
+            .idGioHang(entity.getGioHang().getId())
             .idThuoc(entity.getThuoc().getId())
-            .hamLuong(entity.getHamLuong())
             .build();
         } catch (Exception e) {
             return null;
         }
     }
 
-    public CTDuocChatEntity toEntity(CTDuocChatDto dto){
+    public CTGioHangEntity toEntity(CTGioHangDto dto){
         try {
-            return CTDuocChatEntity.builder()
+            return CTGioHangEntity.builder()
             .id(dto.getId())
-            .duocChat(duocChatRepo.findById(dto.getIdDuocChat()).orElse(null))
+            .gioHang(gioHangRepo.findById(dto.getIdGioHang()).orElse(null))
             .thuoc(thuocRepo.findById(dto.getIdThuoc()).orElse(null))
-            .hamLuong(dto.getHamLuong())
             .build();
         } catch (Exception e) {
             return null;
