@@ -29,6 +29,7 @@ public class DuocChatService {
 
     public DuocChatDto create(DuocChatDto dto) {
         DuocChatEntity entity = duocChatMapper.toEntity(dto);
+        entity.setId(0);
         duocChatRepo.save(entity);
         return dto;
     }

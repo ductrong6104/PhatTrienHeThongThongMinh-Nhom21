@@ -1,4 +1,4 @@
-package com.example.thuoctay.giohang;
+package com.example.thuoctay.nguoidung;
 
 
 
@@ -16,19 +16,25 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "gio_hang")
+@Table(name = "nguoi_dung")
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class GioHangEntity {
+public class NguoiDungEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "so_dien_thoai", columnDefinition = "varchar(12)" ,unique = true, nullable = false)
+    @Column(name = "sdt", columnDefinition = "varchar(10)" ,unique = true, nullable = false)
     private String soDienThoai;
+
+    @Column(name = "mat_khau", columnDefinition = "varchar(10)" ,unique = true, nullable = false)
+    private String matKhau;
+
+    @Column(name = "ten_nguoi_dung", columnDefinition = "nvarchar(50)" , unique = false, nullable = false)
+    private String tenNguoiDung;
         
 }

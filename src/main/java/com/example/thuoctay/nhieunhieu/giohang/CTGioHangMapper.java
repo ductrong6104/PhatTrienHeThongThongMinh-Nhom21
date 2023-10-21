@@ -2,8 +2,8 @@ package com.example.thuoctay.nhieunhieu.giohang;
 
 import org.springframework.stereotype.Component;
 
+import com.example.thuoctay.nguoidung.NguoiDungRepo;
 import com.example.thuoctay.thuoc.ThuocRepo;
-import com.example.thuoctay.giohang.GioHangRepo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -12,13 +12,13 @@ import lombok.RequiredArgsConstructor;
 public class CTGioHangMapper {
     
     private final ThuocRepo thuocRepo;
-    private final  GioHangRepo gioHangRepo;
+    private final  NguoiDungRepo gioHangRepo;
 
      public CTGioHangDto toDto(CTGioHangEntity entity){
         try {
             return CTGioHangDto.builder()
             .id(entity.getId())
-            .idGioHang(entity.getGioHang().getId())
+            .idNguoiDung(entity.getNguoiDung().getId())
             .idThuoc(entity.getThuoc().getId())
             .build();
         } catch (Exception e) {
@@ -30,7 +30,7 @@ public class CTGioHangMapper {
         try {
             return CTGioHangEntity.builder()
             .id(dto.getId())
-            .gioHang(gioHangRepo.findById(dto.getIdGioHang()).orElse(null))
+            .nguoiDung(gioHangRepo.findById(dto.getIdNguoiDung()).orElse(null))
             .thuoc(thuocRepo.findById(dto.getIdThuoc()).orElse(null))
             .build();
         } catch (Exception e) {

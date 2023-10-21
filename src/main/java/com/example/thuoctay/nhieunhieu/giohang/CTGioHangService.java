@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.example.thuoctay.giohang.GioHangEntity;
-import com.example.thuoctay.giohang.GioHangRepo;
+import com.example.thuoctay.nguoidung.NguoiDungEntity;
+import com.example.thuoctay.nguoidung.NguoiDungRepo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,17 +18,17 @@ public class CTGioHangService {
     private final CTGioHangMapper ctGioHangMapper;
     private final CTGioHangMapper2 ctGioHangMapper2;
 
-    private final GioHangRepo gioHangRepo;
+    private final NguoiDungRepo nguoiDungRepo;
 
     public Set<CTGioHangDto> getAll() {
         return ctGioHangRepo.findAll().stream().map(ctGioHangMapper::toDto).collect(Collectors.toSet());
     }
 
-    public Set<CTGioHangDto2> getByThuoc(Integer idGioHang){
-        GioHangEntity gioHangEntity = gioHangRepo.findById(idGioHang).orElse(null);
+    public Set<CTGioHangDto2> getByGioHang(Integer idGioHang){
+        NguoiDungEntity gioHangEntity = nguoiDungRepo.findById(idGioHang).orElse(null);
         if(gioHangEntity == null)
             return null;
-        Set<CTGioHangEntity> ctGioHangEntities = ctGioHangRepo.findByGioHang(gioHangEntity);
+        Set<CTGioHangEntity> ctGioHangEntities = ctGioHangRepo.findByNguoiDung(gioHangEntity);
         Set<CTGioHangDto2> ctGioHangDto2s =  ctGioHangEntities.stream().map(ctGioHangMapper2::toDto).collect(Collectors.toSet());
         return ctGioHangDto2s;
     }

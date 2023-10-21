@@ -1,4 +1,4 @@
-package com.example.thuoctay.nhieunhieu.giohang;
+package com.example.thuoctay.nguoidung;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CTGioHangDto {
-    
+public class NguoiDungDto {
     private Integer id;
-    private Integer idNguoiDung;
-    private Integer idThuoc;
-
+    private String soDienThoai;
+    private String matKhau;
+    private String tenNguoiDung;
 }
