@@ -30,6 +30,11 @@ public class ThuocController {
         return ResponseEntity.ok().body(thuocService.getAll());
     }
 
+    @GetMapping("/thuonghieuvanhom")
+    public ResponseEntity<?> getByThuongHieuVaNhom(@RequestParam(name = "idThuongHieu") Integer idThuongHieu, @RequestParam(name = "idNhom") Integer idNhom) {
+        return ResponseEntity.ok().body(thuocService.getByThuongHieuVaNhom(idThuongHieu, idNhom));
+    }
+
     @GetMapping("/page")
     public ResponseEntity<?> getPage(@RequestParam(name = "pageIndex") Integer pageIndex) {
         return ResponseEntity.ok().body(thuocService.getOnePage(pageIndex, 10));
