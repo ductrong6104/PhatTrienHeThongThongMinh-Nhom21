@@ -27,7 +27,6 @@ public class ThuocDto {
     private BigDecimal gia;
     private Integer tong;
     private Integer daBan;
-    private NhomDto nhomdDto;
-    private ThuongHieuDto thuongHieudDto;
-    private Set<CTDuocChatDto> ctDuocChatDtos;
+    private Integer idNhom;
+    private Integer idThuongHieu;
 }

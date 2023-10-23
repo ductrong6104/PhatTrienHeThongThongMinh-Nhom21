@@ -1,10 +1,5 @@
 package com.example.thuoctay.nhieunhieu.donhang;
 
-
-
-
-import com.example.thuoctay.donhang.DonHangEntity;
-import com.example.thuoctay.thuoc.ThuocEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,11 +32,11 @@ public class CTDonHangEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_don_hang", nullable = false)
-    private DonHangEntity donHang;
+    private Integer idDonHang;
 
     @ManyToOne
     @JoinColumn(name = "id_thuoc", nullable = false)
-    private ThuocEntity thuoc;
+    private Integer idThuoc;
 
     @Column(name = "so_luong", nullable = false)
     private int soLuong;

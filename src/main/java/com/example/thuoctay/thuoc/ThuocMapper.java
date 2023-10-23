@@ -24,15 +24,6 @@ public class ThuocMapper {
     private final CTDuocChatMapper ctDuocChatMapper;
 
     public ThuocDto toDto(ThuocEntity entity) {
-
-        Set<CTDuocChatDto> ctDuocChatDtos = null;
-
-        if (entity.getCtDuocChats() != null) {
-            ctDuocChatDtos = entity.getCtDuocChats()
-                    .stream().map(ctdc -> ctDuocChatMapper.toDto(ctdc))
-                    .collect(Collectors.toSet());
-        }
-
         return ThuocDto.builder()
                 .id(entity.getId())
                 .tenThuoc(entity.getTenThuoc())
@@ -43,22 +34,12 @@ public class ThuocMapper {
                 .gia(entity.getGia())
                 .tong(entity.getTong())
                 .daBan(entity.getDaBan())
-                .nhomdDto(nhomMapper.toDto(entity.getNhom()))
-                .thuongHieudDto(thuongHieuMapper.toDto(entity.getThuongHieu()))
-                .ctDuocChatDtos(ctDuocChatDtos)
+                .idNhom(entity.getIdNhom())
+                .idThuongHieu(entity.getIdThuongHieu())
                 .build();
     }
 
     public ThuocEntity toEntity(ThuocDto thuocDto) {
-
-        NhomEntity nhomEntity = nhomMapper.toEntity(thuocDto.getNhomdDto());
-        ThuongHieuEntity thuongHieuEntity = thuongHieuMapper.toEntity(thuocDto.getThuongHieudDto());
-        Set<CTDuocChatEntity> ctDuocChatEntities = null;
-        if (thuocDto.getCtDuocChatDtos() != null) {
-            ctDuocChatEntities = thuocDto.getCtDuocChatDtos().stream().map(ctDuocChatMapper::toEntity)
-                    .collect(Collectors.toSet());
-        }
-
         return ThuocEntity.builder()
                 .id(thuocDto.getId())
                 .tenThuoc(thuocDto.getTenThuoc())
@@ -69,9 +50,8 @@ public class ThuocMapper {
                 .gia(thuocDto.getGia())
                 .tong(thuocDto.getTong())
                 .daBan(thuocDto.getDaBan())
-                .nhom(nhomEntity)
-                .thuongHieu(thuongHieuEntity)
-                .ctDuocChats(ctDuocChatEntities)
+                .idNhom(thuocDto.getIdNhom())
+                .idThuongHieu(thuocDto.getIdThuongHieu())
                 .build();
     }
 }

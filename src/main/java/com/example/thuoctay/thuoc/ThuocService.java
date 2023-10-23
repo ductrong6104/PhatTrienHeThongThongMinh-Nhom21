@@ -43,34 +43,24 @@ public class ThuocService {
         return null;
     }
 
-    public Set<ThuocDto> getByThuongHieu(Integer idThuongHieu) {
-        ThuongHieuEntity thuongHieuEntity = thuongHieuRepo.findById(idThuongHieu).orElse(null);
-        if (thuongHieuEntity != null) {
-            return thuocRepo.findByThuongHieu(thuongHieuEntity).stream().map(thuocMapper::toDto)
-                    .collect(Collectors.toSet());
-        }
-        return null;
+    public Set<ThuocDto> getByIdThuongHieu(Integer idThuongHieu) {
+        return thuocRepo.findByIdThuongHieu(idThuongHieu).stream().map(thuocMapper::toDto)
+                .collect(Collectors.toSet());
     }
 
-    public Set<ThuocDto> getByNhom(Integer idNhom) {
-        NhomEntity nhomEntity = nhomRepo.findById(idNhom).orElse(null);
-        if (nhomEntity != null) {
-            return thuocRepo.findByNhom(nhomEntity).stream().map(thuocMapper::toDto).collect(Collectors.toSet());
-        }
-        return null;
+    public Set<ThuocDto> getByIdNhom(Integer idNhom) {
+        return thuocRepo.findByIdNhom(idNhom).stream().map(thuocMapper::toDto).collect(Collectors.toSet());
     }
 
-    public Set<ThuocDto> getByThuongHieuVaNhom(Integer idThuongHieu, Integer idNhom) {
-        NhomEntity nhomEntity = nhomRepo.findById(idNhom).orElse(null);
-        ThuongHieuEntity thuongHieuEntity = thuongHieuRepo.findById(idThuongHieu).orElse(null);
-        if (nhomEntity != null && thuongHieuEntity != null) {
-            return thuocRepo.findByThuongHieuAndNhom(thuongHieuEntity, nhomEntity).stream().map(thuocMapper::toDto)
+    public Set<ThuocDto> getByIdThuongHieuVaIdNhom(Integer idThuongHieu, Integer idNhom) {
+        if (idThuongHieu != null && idNhom != null) {
+            return thuocRepo.findByIdThuongHieuAndIdNhom(idThuongHieu, idNhom).stream().map(thuocMapper::toDto)
                     .collect(Collectors.toSet());
-        } else if (thuongHieuEntity != null) {
-            return thuocRepo.findByThuongHieu(thuongHieuEntity).stream().map(thuocMapper::toDto)
+        } else if (idThuongHieu != null) {
+            return thuocRepo.findByIdThuongHieu(idThuongHieu).stream().map(thuocMapper::toDto)
                     .collect(Collectors.toSet());
-        } else if (nhomEntity != null) {
-            return thuocRepo.findByNhom(nhomEntity).stream().map(thuocMapper::toDto).collect(Collectors.toSet());
+        } else if (idNhom != null) {
+            return thuocRepo.findByIdNhom(idNhom).stream().map(thuocMapper::toDto).collect(Collectors.toSet());
         }
         return new HashSet<>();
     }

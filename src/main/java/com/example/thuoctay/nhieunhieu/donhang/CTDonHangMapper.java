@@ -1,25 +1,19 @@
 package com.example.thuoctay.nhieunhieu.donhang;
 
-
 import org.springframework.stereotype.Component;
-import com.example.thuoctay.thuoc.ThuocRepo;
-import com.example.thuoctay.donhang.DonHangRepo;
-
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
 public class CTDonHangMapper {
     
-    private final ThuocRepo thuocRepo;
-    private final DonHangRepo DonHangRepo;
 
      public CTDonHangDto toDto(CTDonHangEntity entity){
         try {
             return CTDonHangDto.builder()
             .id(entity.getId())
-            .idDonHang(entity.getDonHang().getId())
-            .idThuoc(entity.getThuoc().getId())
+            .idDonHang(entity.getIdDonHang())
+            .idThuoc(entity.getIdThuoc())
             .soLuong(entity.getSoLuong())
             .build();
         } catch (Exception e) {
@@ -31,8 +25,8 @@ public class CTDonHangMapper {
         try {
             return CTDonHangEntity.builder()
             .id(dto.getId())
-            .donHang(DonHangRepo.findById(dto.getIdDonHang()).orElse(null))
-            .thuoc(thuocRepo.findById(dto.getIdThuoc()).orElse(null))
+            .idDonHang(dto.getIdDonHang())
+            .idThuoc(dto.getIdThuoc())
             .soLuong(dto.getSoLuong())
             .build();
         } catch (Exception e) {

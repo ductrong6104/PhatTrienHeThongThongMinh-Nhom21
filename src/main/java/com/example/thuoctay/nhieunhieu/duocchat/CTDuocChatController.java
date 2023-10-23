@@ -24,7 +24,7 @@ public class CTDuocChatController {
     
     @GetMapping("/thuoc")
         public ResponseEntity<?> getByThuoc(@RequestParam(name="idThuoc") Integer idThuoc) {
-        return ResponseEntity.ok().body(ctDuocChatService.getByThuoc(idThuoc));
+        return ResponseEntity.ok().body(ctDuocChatService.getByIdThuoc(idThuoc));
     }
 
     @PostMapping("/them")

@@ -30,10 +30,10 @@ public class CTGioHangEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_nguoi_dung", nullable = false)
-    private NguoiDungEntity nguoiDung;
+    private Integer idNguoiDung;
 
     @ManyToOne
     @JoinColumn(name = "id_thuoc", nullable = false)
-    private ThuocEntity thuoc;
+    private Integer idThuoc;
         
 }

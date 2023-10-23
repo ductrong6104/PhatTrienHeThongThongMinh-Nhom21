@@ -16,7 +16,6 @@ public class CTGioHangService {
 
     private final CTGioHangRepo ctGioHangRepo;
     private final CTGioHangMapper ctGioHangMapper;
-    private final CTGioHangMapper2 ctGioHangMapper2;
 
     private final NguoiDungRepo nguoiDungRepo;
 
@@ -24,13 +23,10 @@ public class CTGioHangService {
         return ctGioHangRepo.findAll().stream().map(ctGioHangMapper::toDto).collect(Collectors.toSet());
     }
 
-    public Set<CTGioHangDto2> getByGioHang(Integer idGioHang){
-        NguoiDungEntity gioHangEntity = nguoiDungRepo.findById(idGioHang).orElse(null);
-        if(gioHangEntity == null)
-            return null;
-        Set<CTGioHangEntity> ctGioHangEntities = ctGioHangRepo.findByNguoiDung(gioHangEntity);
-        Set<CTGioHangDto2> ctGioHangDto2s =  ctGioHangEntities.stream().map(ctGioHangMapper2::toDto).collect(Collectors.toSet());
-        return ctGioHangDto2s;
+    public Set<CTGioHangDto> getByIdNguoiDung(Integer idNguoiDung){
+        Set<CTGioHangEntity> ctGioHangEntities = ctGioHangRepo.findByIdNguoiDung(idNguoiDung);
+        Set<CTGioHangDto> ctGioHangDtos =  ctGioHangEntities.stream().map(ctGioHangMapper::toDto).collect(Collectors.toSet());
+        return ctGioHangDtos;
     }
 
     public CTGioHangDto create(CTGioHangDto dto) {
@@ -56,8 +52,8 @@ public class CTGioHangService {
         return null;
     }
 
-    public CTGioHangDto delete(Integer nhomId) {
-        CTGioHangEntity entity = ctGioHangRepo.findById(nhomId).orElse(null);
+    public CTGioHangDto delete(Integer idCTGioHang) {
+        CTGioHangEntity entity = ctGioHangRepo.findById(idCTGioHang).orElse(null);
         if (entity != null) {
             ctGioHangRepo.delete(entity);
             return ctGioHangMapper.toDto(entity);

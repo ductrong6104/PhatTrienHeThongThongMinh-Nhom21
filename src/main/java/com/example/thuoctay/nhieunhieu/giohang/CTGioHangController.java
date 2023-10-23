@@ -23,7 +23,7 @@ public class CTGioHangController {
     
     @GetMapping("/nguoidung")
         public ResponseEntity<?> getByGioHang(@RequestParam(name="idNguoiDung") Integer idNguoiDung) {
-        return ResponseEntity.ok().body(ctGioHangService.getByGioHang(idNguoiDung));
+        return ResponseEntity.ok().body(ctGioHangService.getByIdNguoiDung(idNguoiDung));
     }
 
     @PostMapping("/them")

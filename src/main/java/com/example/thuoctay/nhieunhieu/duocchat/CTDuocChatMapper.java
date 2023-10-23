@@ -18,8 +18,8 @@ public class CTDuocChatMapper {
         try {
             return CTDuocChatDto.builder()
             .id(entity.getId())
-            .idDuocChat(entity.getDuocChat().getId())
-            .idThuoc(entity.getThuoc().getId())
+            .idDuocChat(entity.getIdDuocChat())
+            .idThuoc(entity.getIdThuoc())
             .hamLuong(entity.getHamLuong())
             .build();
         } catch (Exception e) {
@@ -31,8 +31,8 @@ public class CTDuocChatMapper {
         try {
             return CTDuocChatEntity.builder()
             .id(dto.getId())
-            .duocChat(duocChatRepo.findById(dto.getIdDuocChat()).orElse(null))
-            .thuoc(thuocRepo.findById(dto.getIdThuoc()).orElse(null))
+            .idDuocChat(dto.getIdDuocChat())
+            .idThuoc(dto.getIdThuoc())
             .hamLuong(dto.getHamLuong())
             .build();
         } catch (Exception e) {

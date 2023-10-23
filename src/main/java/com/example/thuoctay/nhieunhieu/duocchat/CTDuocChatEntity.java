@@ -37,11 +37,11 @@ public class CTDuocChatEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_duoc_chat", nullable = false)
-    private DuocChatEntity duocChat;
+    private Integer idDuocChat;
 
     @ManyToOne
     @JoinColumn(name = "id_thuoc", nullable = false)
-    private ThuocEntity thuoc;
+    private Integer idThuoc;
 
     @Column(name = "ham_luong", nullable = true)
     private float hamLuong;

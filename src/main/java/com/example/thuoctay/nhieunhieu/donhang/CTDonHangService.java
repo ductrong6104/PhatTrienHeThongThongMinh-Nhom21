@@ -6,16 +6,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
-import com.example.thuoctay.donhang.DonHangEntity;
-import com.example.thuoctay.donhang.DonHangRepo;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class CTDonHangService {
-
-    private final DonHangRepo donHangRepo;
 
     private final CTDonHangRepo ctDonHangRepo;
     private final CTDonHangMapper ctDonHangMapper;
@@ -24,11 +19,8 @@ public class CTDonHangService {
         return ctDonHangRepo.findAll().stream().map(ctDonHangMapper::toDto).collect(Collectors.toSet());
     }
 
-        public Set<CTDonHangDto> getByDonHang(Integer idDonHang){
-        DonHangEntity donHangEntity = donHangRepo.findById(idDonHang).orElse(null);
-        if(donHangEntity == null)
-            return null;
-        Set<CTDonHangEntity> ctDonHangEntities = ctDonHangRepo.findByDonHang(donHangEntity);
+    public Set<CTDonHangDto> getByDonHang(Integer idDonHang){
+        Set<CTDonHangEntity> ctDonHangEntities = ctDonHangRepo.findByIdDonHang(idDonHang);
         Set<CTDonHangDto> ctDonHangDtos = ctDonHangEntities.stream().map(ctDonHangMapper::toDto).collect(Collectors.toSet());
         return ctDonHangDtos;
     }

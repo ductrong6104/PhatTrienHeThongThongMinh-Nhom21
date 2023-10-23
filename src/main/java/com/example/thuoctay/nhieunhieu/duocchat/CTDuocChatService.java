@@ -5,9 +5,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.example.thuoctay.thuoc.ThuocEntity;
-import com.example.thuoctay.thuoc.ThuocRepo;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -16,21 +13,15 @@ public class CTDuocChatService {
 
     private final CTDuocChatRepo ctDuocChatRepo;
     private final CTDuocChatMapper ctDuocChatMapper;
-    private final CTDuocChatMapper2 ctDuocChatMapper2;
-
-    private final ThuocRepo thuocRepo;
 
     public Set<CTDuocChatDto> getAll() {
         return ctDuocChatRepo.findAll().stream().map(ctDuocChatMapper::toDto).collect(Collectors.toSet());
     }
 
-    public Set<CTDuocChatDto2> getByThuoc(Integer idThuoc){
-        ThuocEntity thuocEntity = thuocRepo.findById(idThuoc).orElse(null);
-        if(thuocEntity == null)
-            return null;
-        Set<CTDuocChatEntity> ctDuocChatEntities = ctDuocChatRepo.findByThuoc(thuocEntity);
-        Set<CTDuocChatDto2> ctDuocChatDto2s =  ctDuocChatEntities.stream().map(ctDuocChatMapper2::toDto).collect(Collectors.toSet());
-        return ctDuocChatDto2s;
+    public Set<CTDuocChatDto> getByIdThuoc(Integer idThuoc){
+        Set<CTDuocChatEntity> ctDuocChatEntities = ctDuocChatRepo.findByIdThuoc(idThuoc);
+        Set<CTDuocChatDto> ctDuocChatDtos =  ctDuocChatEntities.stream().map(ctDuocChatMapper::toDto).collect(Collectors.toSet());
+        return ctDuocChatDtos;
     }
 
     public CTDuocChatDto create(CTDuocChatDto dto) {
@@ -56,8 +47,8 @@ public class CTDuocChatService {
         return null;
     }
 
-    public CTDuocChatDto delete(Integer nhomId) {
-        CTDuocChatEntity entity = ctDuocChatRepo.findById(nhomId).orElse(null);
+    public CTDuocChatDto delete(Integer idDuocChat) {
+        CTDuocChatEntity entity = ctDuocChatRepo.findById(idDuocChat).orElse(null);
         if (entity != null) {
             ctDuocChatRepo.delete(entity);
             return ctDuocChatMapper.toDto(entity);

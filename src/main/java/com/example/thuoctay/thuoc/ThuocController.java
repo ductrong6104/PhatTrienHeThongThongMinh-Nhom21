@@ -32,7 +32,7 @@ public class ThuocController {
 
     @GetMapping("/thuonghieuvanhom")
     public ResponseEntity<?> getByThuongHieuVaNhom(@RequestParam(name = "idThuongHieu") Integer idThuongHieu, @RequestParam(name = "idNhom") Integer idNhom) {
-        return ResponseEntity.ok().body(thuocService.getByThuongHieuVaNhom(idThuongHieu, idNhom));
+        return ResponseEntity.ok().body(thuocService.getByIdThuongHieuVaIdNhom(idThuongHieu, idNhom));
     }
 
     @GetMapping("/page")

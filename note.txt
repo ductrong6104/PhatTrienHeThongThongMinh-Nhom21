@@ -1,0 +1,8 @@
+sửa: (Thay khóa ngoại bằng integer)
+    nhom
+    thuong hieu
+    thuoc
+    duoc chat
+    ct don hang
+    ct duoc chat
+    ct gio hang

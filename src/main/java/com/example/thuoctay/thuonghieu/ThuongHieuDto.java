@@ -13,5 +13,4 @@ public class ThuongHieuDto {
     private Integer id;
     private String tenThuongHieu;
     private String hinhAnh;
-
 }

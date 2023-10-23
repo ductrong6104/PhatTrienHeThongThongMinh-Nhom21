@@ -11,15 +11,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CTGioHangMapper {
     
-    private final ThuocRepo thuocRepo;
-    private final  NguoiDungRepo gioHangRepo;
-
      public CTGioHangDto toDto(CTGioHangEntity entity){
         try {
             return CTGioHangDto.builder()
             .id(entity.getId())
-            .idNguoiDung(entity.getNguoiDung().getId())
-            .idThuoc(entity.getThuoc().getId())
+            .idNguoiDung(entity.getIdNguoiDung())
+            .idThuoc(entity.getIdThuoc())
             .build();
         } catch (Exception e) {
             return null;
@@ -27,15 +24,11 @@ public class CTGioHangMapper {
     }
 
     public CTGioHangEntity toEntity(CTGioHangDto dto){
-        try {
-            return CTGioHangEntity.builder()
+        return CTGioHangEntity.builder()
             .id(dto.getId())
-            .nguoiDung(gioHangRepo.findById(dto.getIdNguoiDung()).orElse(null))
-            .thuoc(thuocRepo.findById(dto.getIdThuoc()).orElse(null))
+            .idNguoiDung(dto.getIdNguoiDung())
+            .idThuoc(dto.getIdThuoc())
             .build();
-        } catch (Exception e) {
-            return null;
-        }
     }
 
 }
