@@ -37,14 +37,12 @@ public class CTDuocChatService {
         return dtos;
     }
 
-    public CTDuocChatDto edit(CTDuocChatDto dto) {
-        CTDuocChatEntity entity = ctDuocChatRepo.findById(dto.getId()).orElse(null);
-        if (entity != null) {
-            entity = ctDuocChatMapper.toEntity(dto);
-            ctDuocChatRepo.save(entity);
-            return dto;
-        }
-        return null;
+    public Set<CTDuocChatDto> capNhatCTDCByIdThuoc(Integer idThuoc, Set<CTDuocChatDto> dtos) {
+        Set<CTDuocChatEntity> entitys = ctDuocChatRepo.findByIdThuoc(idThuoc);
+        ctDuocChatRepo.deleteAll(entitys);
+        Set<CTDuocChatEntity> entitys2 = dtos.stream().map(ctDuocChatMapper::toEntity).collect(Collectors.toSet());
+        ctDuocChatRepo.saveAll(entitys2);
+        return dtos;
     }
 
     public CTDuocChatDto delete(Integer idDuocChat) {

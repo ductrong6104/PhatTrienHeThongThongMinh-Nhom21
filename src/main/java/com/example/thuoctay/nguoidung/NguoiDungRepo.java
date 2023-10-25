@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NguoiDungRepo extends JpaRepository<NguoiDungEntity, Integer>{
     Optional<NguoiDungEntity> findBySoDienThoai(String soDienThoai);
+    Optional<NguoiDungEntity> findBySoDienThoaiAndMatKhau(String soDienThoai, String matKhau);
+
 }

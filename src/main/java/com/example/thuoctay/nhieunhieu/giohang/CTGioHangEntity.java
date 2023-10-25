@@ -1,15 +1,10 @@
 package com.example.thuoctay.nhieunhieu.giohang;
 
-import com.example.thuoctay.nguoidung.NguoiDungEntity;
-import com.example.thuoctay.thuoc.ThuocEntity;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,12 +23,10 @@ public class CTGioHangEntity {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_nguoi_dung", nullable = false)
+    @Column(name = "id_nguoi_dung", nullable = false)
     private Integer idNguoiDung;
 
-    @ManyToOne
-    @JoinColumn(name = "id_thuoc", nullable = false)
+    @Column(name = "id_thuoc", nullable = false)
     private Integer idThuoc;
         
 }

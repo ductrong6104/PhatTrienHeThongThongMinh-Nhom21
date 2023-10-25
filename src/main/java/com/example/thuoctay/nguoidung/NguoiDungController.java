@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.thuoctay.utils.StringEncryption;
+
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/giohang")
+@RequestMapping("/nguoidung")
 @RequiredArgsConstructor
 @CrossOrigin
 public class NguoiDungController {
@@ -27,5 +30,12 @@ public class NguoiDungController {
     @PostMapping("/tao")
     public ResponseEntity<?> taoGioHang(@RequestBody NguoiDungDto dto){
         return ResponseEntity.ok().body(nguoiDungService.create(dto));
+    }
+
+    @PostMapping("/dangnhap")
+    public ResponseEntity<?> dangNhap(@RequestBody NguoiDungDto dto){
+        NguoiDungDto nguoiDungDto = nguoiDungService.dangNhap(dto.getSoDienThoai(), dto.getMatKhau());
+        String token = StringEncryption.encode(nguoiDungDto.getSoDienThoai());
+        return ResponseEntity.ok().header("token", token).body(nguoiDungDto);
     }
 }

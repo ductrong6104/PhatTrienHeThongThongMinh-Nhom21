@@ -5,9 +5,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.example.thuoctay.nguoidung.NguoiDungEntity;
-import com.example.thuoctay.nguoidung.NguoiDungRepo;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -16,8 +13,6 @@ public class CTGioHangService {
 
     private final CTGioHangRepo ctGioHangRepo;
     private final CTGioHangMapper ctGioHangMapper;
-
-    private final NguoiDungRepo nguoiDungRepo;
 
     public Set<CTGioHangDto> getAll() {
         return ctGioHangRepo.findAll().stream().map(ctGioHangMapper::toDto).collect(Collectors.toSet());

@@ -63,4 +63,12 @@ public class NguoiDungService {
         }
         return null;
     }
+
+    public NguoiDungDto dangNhap(String sdt, String matKhau) {
+        NguoiDungEntity entity = nguoiDungRepo.findBySoDienThoaiAndMatKhau(sdt, matKhau).orElse(null);
+        if (entity != null) {
+            return nguoiDungMapper.toDto(entity);
+        }
+        return null;
+    }
 }

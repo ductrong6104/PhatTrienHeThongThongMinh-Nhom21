@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.utils.ResUtils;
+import com.example.thuoctay.utils.ResUtils;
 
 import lombok.RequiredArgsConstructor;
 
@@ -53,6 +53,7 @@ public class ThuocController {
 
     @PostMapping("/taothuoc")
     public ResponseEntity<?> taoThuoc(@RequestBody ThuocDto dto) {
+        System.out.println("\n\n\n\n\n" + dto.toString() + "\n\n\n\n\n");
         return ResponseEntity.ok().body(thuocService.create(dto));
     }
 

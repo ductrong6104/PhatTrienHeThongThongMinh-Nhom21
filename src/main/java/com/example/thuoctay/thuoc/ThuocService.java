@@ -7,11 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.example.thuoctay.nhom.NhomEntity;
-import com.example.thuoctay.nhom.NhomRepo;
-import com.example.thuoctay.thuonghieu.ThuongHieuEntity;
-import com.example.thuoctay.thuonghieu.ThuongHieuRepo;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -19,8 +14,6 @@ import lombok.RequiredArgsConstructor;
 public class ThuocService {
 
     private final ThuocRepo thuocRepo;
-    private final ThuongHieuRepo thuongHieuRepo;
-    private final NhomRepo nhomRepo;
 
     private final ThuocMapper thuocMapper;
 

@@ -1,13 +1,6 @@
 package com.example.thuoctay.thuoc;
 
-
 import java.math.BigDecimal;
-import java.util.Set;
-
-import com.example.thuoctay.nhieunhieu.duocchat.CTDuocChatDto;
-import com.example.thuoctay.nhom.NhomDto;
-import com.example.thuoctay.thuonghieu.ThuongHieuDto;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

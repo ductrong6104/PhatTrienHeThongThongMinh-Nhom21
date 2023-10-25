@@ -1,27 +1,12 @@
 package com.example.thuoctay.thuoc;
 
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Component;
-
-import com.example.thuoctay.nhieunhieu.duocchat.CTDuocChatDto;
-import com.example.thuoctay.nhieunhieu.duocchat.CTDuocChatEntity;
-import com.example.thuoctay.nhieunhieu.duocchat.CTDuocChatMapper;
-import com.example.thuoctay.nhom.NhomEntity;
-import com.example.thuoctay.nhom.NhomMapper;
-import com.example.thuoctay.thuonghieu.ThuongHieuEntity;
-import com.example.thuoctay.thuonghieu.ThuongHieuMapper;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
 public class ThuocMapper {
-
-    private final NhomMapper nhomMapper;
-    private final ThuongHieuMapper thuongHieuMapper;
-    private final CTDuocChatMapper ctDuocChatMapper;
 
     public ThuocDto toDto(ThuocEntity entity) {
         return ThuocDto.builder()

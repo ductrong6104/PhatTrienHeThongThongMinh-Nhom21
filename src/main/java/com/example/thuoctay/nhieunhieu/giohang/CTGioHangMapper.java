@@ -2,9 +2,6 @@ package com.example.thuoctay.nhieunhieu.giohang;
 
 import org.springframework.stereotype.Component;
 
-import com.example.thuoctay.nguoidung.NguoiDungRepo;
-import com.example.thuoctay.thuoc.ThuocRepo;
-
 import lombok.RequiredArgsConstructor;
 
 @Component

@@ -40,7 +40,7 @@ public class DonHangService {
         return null;
     }
 
-    public List<DonHangDto> getsByNguoiDung(Integer idNguoiDung) {
+    public List<DonHangDto> getsByIdNguoiDung(Integer idNguoiDung) {
         if (idNguoiDung == null)
             return null;
         List<DonHangEntity> entitys = donHangRepo.findByIdNguoiDung(idNguoiDung);

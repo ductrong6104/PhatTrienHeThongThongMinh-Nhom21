@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -47,7 +45,6 @@ public class ThuocEntity {
     @Column(name = "gia")
     private BigDecimal gia;
 
-
     @Column(name = "tong", nullable = false)
     @ColumnDefault("0")
     private Integer tong;
@@ -56,11 +53,9 @@ public class ThuocEntity {
     @ColumnDefault("0")
     private Integer daBan;
 
-    @ManyToOne
-    @JoinColumn(name = "id_nhom")
+    @Column(name = "id_nhom")
     private Integer idNhom;
 
-    @ManyToOne
-    @JoinColumn(name = "id_thuong_hieu")
+    @Column(name = "id_thuong_hieu")
     private Integer idThuongHieu;
 }

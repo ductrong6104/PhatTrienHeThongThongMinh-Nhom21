@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
@@ -30,12 +28,10 @@ public class CTDonHangEntity {
     @Column(name = "id")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_don_hang", nullable = false)
+    @Column(name = "id_don_hang", nullable = false)
     private Integer idDonHang;
 
-    @ManyToOne
-    @JoinColumn(name = "id_thuoc", nullable = false)
+    @Column(name = "id_thuoc", nullable = false)
     private Integer idThuoc;
 
     @Column(name = "so_luong", nullable = false)

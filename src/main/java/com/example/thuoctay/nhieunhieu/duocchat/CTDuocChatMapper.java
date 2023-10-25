@@ -2,17 +2,11 @@ package com.example.thuoctay.nhieunhieu.duocchat;
 
 import org.springframework.stereotype.Component;
 
-import com.example.thuoctay.duocchat.DuocChatRepo;
-import com.example.thuoctay.thuoc.ThuocRepo;
-
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
 public class CTDuocChatMapper {
-    
-    private final ThuocRepo thuocRepo;
-    private final DuocChatRepo duocChatRepo;
 
      public CTDuocChatDto toDto(CTDuocChatEntity entity){
         try {

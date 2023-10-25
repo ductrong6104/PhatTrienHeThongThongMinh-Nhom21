@@ -1,4 +1,4 @@
-package com.example.utils;
+package com.example.thuoctay.utils;
 
 import java.util.Base64;
 
@@ -15,4 +15,13 @@ public class StringEncryption {
         byte[] decodedBytes = Base64.getDecoder().decode(encodedString.getBytes());
         return new String(decodedBytes);
     }
+
+    // public static void main(String[] args) {
+    //     String userName = "Phung Duc manh dep trai";
+    //     String token = encode(userName);
+    //     String dc= decode(token);
+    //     System.out.println(token);
+    //     System.out.println(dc);
+
+    // }
 }
