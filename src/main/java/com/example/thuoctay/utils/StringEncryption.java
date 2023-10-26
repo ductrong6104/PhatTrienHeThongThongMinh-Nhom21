@@ -17,7 +17,7 @@ public class StringEncryption {
     }
 
     // public static void main(String[] args) {
-    //     String userName = "Phung Duc manh dep trai";
+    //     String userName = "0337021937";
     //     String token = encode(userName);
     //     String dc= decode(token);
     //     System.out.println(token);

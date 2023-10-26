@@ -14,4 +14,5 @@ public class NguoiDungDto {
     private String soDienThoai;
     private String matKhau;
     private String tenNguoiDung;
+    private String token;
 }

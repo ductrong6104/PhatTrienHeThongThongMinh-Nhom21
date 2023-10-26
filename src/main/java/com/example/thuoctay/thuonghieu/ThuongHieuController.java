@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.thuoctay.anotation.Role;
 import com.example.thuoctay.utils.ResUtils;
 
 import lombok.RequiredArgsConstructor;
@@ -44,6 +45,7 @@ public class ThuongHieuController {
         return ResponseEntity.ok().body(thuongHieuService.getByTen(ten));
     }
 
+    @Role({"ADMIN"})
     @PostMapping("/tao")
     public ResponseEntity<?> taoThuongHieu(@RequestParam(name = "hinhAnh") MultipartFile hinhAnh,
             @RequestParam(name = "tenthuongHieu") String tenthuongHieu) {
@@ -52,6 +54,7 @@ public class ThuongHieuController {
         return ResponseEntity.ok().body(thuongHieuService.create(dto));
     }
 
+    @Role({"ADMIN"})
     @PutMapping("/sua")
     public ResponseEntity<?> suaThuongHieu(
             @RequestParam(name = "hinhAnh", required = false) MultipartFile hinhAnh,
@@ -71,6 +74,7 @@ public class ThuongHieuController {
 
     }
 
+    @Role({"ADMIN"})
     @DeleteMapping("/xoa")
     public ResponseEntity<?> xoaThuongHieu(@RequestParam(name = "idThuongHieu") Integer id) {
         return ResponseEntity.ok().body(thuongHieuService.delete(id));

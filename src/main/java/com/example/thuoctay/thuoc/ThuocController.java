@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.thuoctay.anotation.Role;
 import com.example.thuoctay.utils.ResUtils;
 
 import lombok.RequiredArgsConstructor;
@@ -51,22 +52,26 @@ public class ThuocController {
         return ResponseEntity.ok().body(dto);
     }
 
+    @Role({"ADMIN"})
     @PostMapping("/taothuoc")
     public ResponseEntity<?> taoThuoc(@RequestBody ThuocDto dto) {
         System.out.println("\n\n\n\n\n" + dto.toString() + "\n\n\n\n\n");
         return ResponseEntity.ok().body(thuocService.create(dto));
     }
 
+    @Role({"ADMIN"})
     @PutMapping("/suathuoc")
     public ResponseEntity<?> suaThuoc(@RequestBody ThuocDto dto) {
         return ResponseEntity.ok().body(thuocService.edit(dto));
     }
 
+    @Role({"ADMIN"})
     @DeleteMapping("/xoathuoc")
     public ResponseEntity<?> xoaThuoc(@RequestParam(name = "idThuoc") Integer id) {
         return ResponseEntity.ok().body(thuocService.delete(id));
     }
 
+    @Role({"ADMIN"})
     @PostMapping("/themhinhanh")
     public ResponseEntity<?> themHinhAnh(@RequestParam(name = "hinhAnh") MultipartFile hinhAnh,
             @RequestParam(name = "idThuoc") Integer idThuoc) {
@@ -78,6 +83,7 @@ public class ThuocController {
         return ResponseEntity.ok().body(fileName);
     }
 
+    @Role({"ADMIN"})
     @PostMapping("/suahinhanh")
     public ResponseEntity<?> suaHinhAnh(@RequestParam(name = "hinhAnh") MultipartFile hinhAnh,
             @RequestParam(name = "idThuoc") Integer idThuoc,

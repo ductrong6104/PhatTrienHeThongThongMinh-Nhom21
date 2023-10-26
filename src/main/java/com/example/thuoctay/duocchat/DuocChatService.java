@@ -27,11 +27,12 @@ public class DuocChatService {
         return set;
     }
 
-    public DuocChatDto create(DuocChatDto dto) {
-        DuocChatEntity entity = duocChatMapper.toEntity(dto);
+    public DuocChatDto create(String tenDuocChat) {
+        DuocChatEntity entity = DuocChatEntity.builder().id(0).tenDuocChat(tenDuocChat).build();
         entity.setId(0);
         duocChatRepo.save(entity);
-        return dto;
+
+        return duocChatMapper.toDto(entity);
     }
 
     public DuocChatDto edit(DuocChatDto dto) {

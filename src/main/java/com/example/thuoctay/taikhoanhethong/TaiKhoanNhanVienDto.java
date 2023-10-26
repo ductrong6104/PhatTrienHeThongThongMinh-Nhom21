@@ -14,5 +14,7 @@ public class TaiKhoanNhanVienDto {
     private String tenDangNhap;
     private String tenNguoiDung;
     private String role;
+    private String token;
+
 
 }

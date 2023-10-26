@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.thuoctay.anotation.Role;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,11 +22,13 @@ public class CTGioHangController {
 
     private final CTGioHangService ctGioHangService;
     
+    @Role("CUSTOMER")
     @GetMapping("/nguoidung")
-        public ResponseEntity<?> getByGioHang(@RequestParam(name="idNguoiDung") Integer idNguoiDung) {
+        public ResponseEntity<?> getByNguoiDung(@RequestParam(name="idNguoiDung") Integer idNguoiDung) {
         return ResponseEntity.ok().body(ctGioHangService.getByIdNguoiDung(idNguoiDung));
     }
 
+    @Role("CUSTOMER")
     @PostMapping("/them")
     public ResponseEntity<?> themCtGioHang(@RequestBody CTGioHangDto dtos) {
         return ResponseEntity.ok().body(ctGioHangService.create(dtos));

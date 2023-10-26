@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.thuoctay.taikhoanhethong.TaiKhoanDangNhapDto;
 import com.example.thuoctay.utils.StringEncryption;
 
 import lombok.RequiredArgsConstructor;
@@ -28,14 +29,19 @@ public class NguoiDungController {
     }
 
     @PostMapping("/tao")
-    public ResponseEntity<?> taoGioHang(@RequestBody NguoiDungDto dto){
+    public ResponseEntity<?> taoNguoiDung(@RequestBody NguoiDungDto dto){
         return ResponseEntity.ok().body(nguoiDungService.create(dto));
     }
 
     @PostMapping("/dangnhap")
-    public ResponseEntity<?> dangNhap(@RequestBody NguoiDungDto dto){
-        NguoiDungDto nguoiDungDto = nguoiDungService.dangNhap(dto.getSoDienThoai(), dto.getMatKhau());
+    public ResponseEntity<?> dangNhap(@RequestBody TaiKhoanDangNhapDto dto){
+        System.out.println("\n\n\n\n\n" + dto.toString() + "\n\n\n\n\n");
+        NguoiDungDto nguoiDungDto = nguoiDungService.dangNhap(dto.getTenDangNhap(), dto.getMatKhau());
+        if(nguoiDungDto == null){
+            return ResponseEntity.badRequest().body("Đăng nhập thất bại");
+        }
         String token = StringEncryption.encode(nguoiDungDto.getSoDienThoai());
-        return ResponseEntity.ok().header("token", token).body(nguoiDungDto);
+        nguoiDungDto.setToken(token);
+        return ResponseEntity.ok().body(nguoiDungDto);
     }
 }
