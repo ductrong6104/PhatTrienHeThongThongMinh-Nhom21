@@ -79,8 +79,8 @@ public class DuocChatController {
     }
 
     @GetMapping("/timKiemTenDuocChat")
-    public ResponseEntity<?> findByTenDuocChatContaining(@RequestParam(name = "tenDuocChat") String ten) {
-        List<DuocChatDto> dto = duocChatService.findByTenDuocChatContaining(ten);
+    public ResponseEntity<?> findByTenDuocChatContaining(@RequestParam(name = "tenDuocChat") String ten, @RequestParam(name = "page") Integer page) {
+        List<DuocChatDto> dto = duocChatService.findByTenDuocChatContaining(ten, page);
         return ResponseEntity.ok().body(dto);
     }
 }

@@ -73,8 +73,8 @@ public class ThuongHieuController {
     }
 
     @GetMapping("/timKiemTenThuongHieu")
-    public ResponseEntity<?> findByTenThuongHieuContaining(@RequestParam(name = "tenThuongHieu") String ten) {
-        List<ThuongHieuDto> dto = thuongHieuService.findByTenThuongHieuContaining(ten);
+    public ResponseEntity<?> findByTenThuongHieuContaining(@RequestParam(name = "tenThuongHieu") String ten, @RequestParam(name = "page") Integer page) {
+        List<ThuongHieuDto> dto = thuongHieuService.findByTenThuongHieuContaining(ten,page);
         return ResponseEntity.ok().body(dto);
     }
 }

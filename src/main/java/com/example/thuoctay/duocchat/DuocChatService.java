@@ -72,8 +72,8 @@ public class DuocChatService {
         return null;
     }
 
-    public List<DuocChatDto> findByTenDuocChatContaining(String ten){
-        List<DuocChatDto> set = duocChatRepo.findByTenDuocChatContaining(ten).stream().map(duocChatMapper::toDto)
+    public List<DuocChatDto> findByTenDuocChatContaining(String ten, Integer page){
+        List<DuocChatDto> set = duocChatRepo.findByTenDuocChatContaining(ten, PageRequest.of(page, 10)).stream().map(duocChatMapper::toDto)
                 .collect(Collectors.toList());
         return set;
     }

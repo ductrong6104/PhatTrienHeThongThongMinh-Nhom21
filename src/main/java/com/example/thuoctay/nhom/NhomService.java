@@ -70,8 +70,8 @@ public class NhomService {
         return null;
     }
 
-    public List<NhomDto> findByTenNhomContaining(String ten){
-        List<NhomDto> set = nhomRepo.findByTenNhomContaining(ten).stream().map(nhomMapper::toDto)
+    public List<NhomDto> findByTenNhomContaining(String ten, Integer page){
+        List<NhomDto> set = nhomRepo.findByTenNhomContaining(ten, PageRequest.of(page, 10)).stream().map(nhomMapper::toDto)
                 .collect(Collectors.toList());
         return set;
     }

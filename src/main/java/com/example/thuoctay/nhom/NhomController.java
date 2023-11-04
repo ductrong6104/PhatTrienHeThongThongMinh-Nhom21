@@ -72,8 +72,8 @@ public class NhomController {
     }
 
     @GetMapping("/timKiemTenNhom")
-    public ResponseEntity<?> findByTenNhomContaining(@RequestParam(name = "tenNhom") String ten) {
-        List<NhomDto> dto = nhomService.findByTenNhomContaining(ten);
+    public ResponseEntity<?> findByTenNhomContaining(@RequestParam(name = "tenNhom") String ten, @RequestParam(name = "page") Integer page) {
+        List<NhomDto> dto = nhomService.findByTenNhomContaining(ten, page);
         return ResponseEntity.ok().body(dto);
     }
 }

@@ -15,5 +15,5 @@ public interface ThuocRepo extends JpaRepository<ThuocEntity, Integer>{
     Page<ThuocEntity> findByIdThuongHieu(Integer idThuongHieu, Pageable pageable);
     Page<ThuocEntity> findByIdThuongHieuAndIdNhom(Integer idThuongHieu, Integer idNhom, Pageable pageable);
 
-    List<ThuocEntity> findByTenThuocContaining(String ten);
+    Page<ThuocEntity> findByTenThuocContaining(String ten, Pageable pageable);
 }

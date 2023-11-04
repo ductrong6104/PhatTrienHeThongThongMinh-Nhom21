@@ -70,8 +70,8 @@ public class ThuongHieuService {
         return null;
     }
 
-    public List<ThuongHieuDto> findByTenThuongHieuContaining(String ten){
-        List<ThuongHieuDto> set = thuongHieuRepo.findByTenThuongHieuContaining(ten).stream().map(thuongHieuMapper::toDto)
+    public List<ThuongHieuDto> findByTenThuongHieuContaining(String ten, Integer page){
+        List<ThuongHieuDto> set = thuongHieuRepo.findByTenThuongHieuContaining(ten, PageRequest.of(page, 10)).stream().map(thuongHieuMapper::toDto)
                 .collect(Collectors.toList());
         return set;
     }

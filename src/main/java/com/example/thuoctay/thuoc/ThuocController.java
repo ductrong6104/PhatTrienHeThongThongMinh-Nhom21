@@ -102,8 +102,16 @@ public class ThuocController {
     }
 
     @GetMapping("/timKiemTenThuoc")
-    public ResponseEntity<?> findByTenThuocContaining(@RequestParam(name = "tenThuoc") String ten) {
-        List<ThuocDto> dto = thuocService.findByTenThuocContaining(ten);
+    public ResponseEntity<?> findByTenThuocContaining(@RequestParam(name = "tenThuoc") String ten, @RequestParam(name = "page") Integer page) {
+        List<ThuocDto> dto = thuocService.findByTenThuocContaining(ten, page);
         return ResponseEntity.ok().body(dto);
     }
+
+    @GetMapping("/timKiemTenThuocTheoDeXuat")
+    public ResponseEntity<?> findByRecommendTenThuoc(@RequestParam(name = "tenThuoc") String ten, @RequestParam(name = "page") Integer page) {
+        List<ThuocDto> dto = thuocService.findByRecommendTenThuoc(ten, page);
+        return ResponseEntity.ok().body(dto);
+    }
+
+
 }
