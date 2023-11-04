@@ -4,8 +4,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 !**/src/test/**/target/
-**/images/
-**/images/**
+*.jpg
+*.png
+*.jpeg
 
 ### STS ###
 .apt_generated
