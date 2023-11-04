@@ -1,5 +1,6 @@
 package com.example.thuoctay.nhom;
 
+import com.example.thuoctay.thuoc.ThuocDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +17,8 @@ import com.example.thuoctay.anotation.Role;
 import com.example.thuoctay.utils.ResUtils;
 
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/nhom")
@@ -66,5 +69,11 @@ public class NhomController {
     @DeleteMapping("/xoa")
     public ResponseEntity<?> xoaNhom(@RequestParam(name = "idNhom") Integer id) {
         return ResponseEntity.ok().body(nhomService.delete(id));
+    }
+
+    @GetMapping("/timKiemTenNhom")
+    public ResponseEntity<?> findByTenNhomContaining(@RequestParam(name = "tenNhom") String ten) {
+        List<NhomDto> dto = nhomService.findByTenNhomContaining(ten);
+        return ResponseEntity.ok().body(dto);
     }
 }

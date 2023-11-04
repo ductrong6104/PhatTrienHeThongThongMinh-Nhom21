@@ -1,5 +1,6 @@
 package com.example.thuoctay.thuoc;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -14,4 +15,5 @@ public interface ThuocRepo extends JpaRepository<ThuocEntity, Integer>{
     Page<ThuocEntity> findByIdThuongHieu(Integer idThuongHieu, Pageable pageable);
     Page<ThuocEntity> findByIdThuongHieuAndIdNhom(Integer idThuongHieu, Integer idNhom, Pageable pageable);
 
+    List<ThuocEntity> findByTenThuocContaining(String ten);
 }

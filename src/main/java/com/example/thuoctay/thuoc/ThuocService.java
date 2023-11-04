@@ -1,6 +1,7 @@
 package com.example.thuoctay.thuoc;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -103,5 +104,11 @@ public class ThuocService {
             return thuocMapper.toDto(entity);
         }
         return null;
+    }
+
+    public List<ThuocDto> findByTenThuocContaining(String ten){
+        List<ThuocDto> set = thuocRepo.findByTenThuocContaining(ten).stream().map(thuocMapper::toDto)
+                .collect(Collectors.toList());
+        return set;
     }
 }

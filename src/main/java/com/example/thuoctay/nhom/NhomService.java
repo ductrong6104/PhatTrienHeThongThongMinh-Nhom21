@@ -1,8 +1,10 @@
 package com.example.thuoctay.nhom;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.example.thuoctay.thuoc.ThuocDto;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -66,5 +68,11 @@ public class NhomService {
             return nhomMapper.toDto(entity);
         }
         return null;
+    }
+
+    public List<NhomDto> findByTenNhomContaining(String ten){
+        List<NhomDto> set = nhomRepo.findByTenNhomContaining(ten).stream().map(nhomMapper::toDto)
+                .collect(Collectors.toList());
+        return set;
     }
 }

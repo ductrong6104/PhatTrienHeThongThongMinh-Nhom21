@@ -1,5 +1,6 @@
 package com.example.thuoctay.duocchat;
 
+import com.example.thuoctay.nhom.NhomDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +19,8 @@ import com.example.thuoctay.utils.Auth;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/duocchat")
@@ -73,5 +76,11 @@ public class DuocChatController {
     @DeleteMapping("/xoa")
     public ResponseEntity<?> xoaDuocChat(@RequestParam(name = "idDuocChat") Integer id) {
         return ResponseEntity.ok().body(duocChatService.delete(id));
+    }
+
+    @GetMapping("/timKiemTenDuocChat")
+    public ResponseEntity<?> findByTenDuocChatContaining(@RequestParam(name = "tenDuocChat") String ten) {
+        List<DuocChatDto> dto = duocChatService.findByTenDuocChatContaining(ten);
+        return ResponseEntity.ok().body(dto);
     }
 }

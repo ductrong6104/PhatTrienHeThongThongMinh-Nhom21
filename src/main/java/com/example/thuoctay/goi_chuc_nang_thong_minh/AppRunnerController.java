@@ -27,6 +27,7 @@ public class AppRunnerController {
     @GetMapping
     public ResponseEntity<?> runOrCheckExternalApp() {
         System.out.println("\nStatus: " + status);
+        System.out.println("\n\nDIR: "+ currentDirectory);
         if (status == 1) {
             return ResponseEntity.ok().body("Ứng dụng đang chạy.");
         }
@@ -59,11 +60,13 @@ public class AppRunnerController {
                         int exitCode = process.waitFor();
                         System.out.println("Lệnh đã hoàn thành với mã thoát: " + exitCode);
                     if (exitCode == 0) {
+                            trangThai = "Đã chạy thành công!";
                             System.out.println("Command executed successfully.");
                         } else {
+                            trangThai = "Chạy thất bại!";
                             System.out.println("Command execution failed.");
                         }
-                        trangThai = "Exit with code: " + exitCode;
+                        
                     } catch (IOException | InterruptedException e) {
                         e.printStackTrace();
                         trangThai = "Chạy lỗi";

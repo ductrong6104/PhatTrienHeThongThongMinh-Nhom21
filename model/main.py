@@ -8,7 +8,7 @@ import time
 from sklearn.preprocessing import LabelEncoder
 
 
-
+print("abcsd")
 SERVER = 'localhost'
 DATABASE = 'ThuocTay'
 USERNAME = 'sa'

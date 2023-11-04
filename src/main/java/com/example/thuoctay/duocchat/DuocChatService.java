@@ -1,8 +1,10 @@
 package com.example.thuoctay.duocchat;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.example.thuoctay.nhom.NhomDto;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -68,5 +70,11 @@ public class DuocChatService {
             return duocChatMapper.toDto(entity);
         }
         return null;
+    }
+
+    public List<DuocChatDto> findByTenDuocChatContaining(String ten){
+        List<DuocChatDto> set = duocChatRepo.findByTenDuocChatContaining(ten).stream().map(duocChatMapper::toDto)
+                .collect(Collectors.toList());
+        return set;
     }
 }
