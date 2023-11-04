@@ -36,24 +36,27 @@ public class ThuocService {
         return null;
     }
 
-    public Set<ThuocDto> getByIdThuongHieu(Integer idThuongHieu) {
-        return thuocRepo.findByIdThuongHieu(idThuongHieu).stream().map(thuocMapper::toDto)
+    public Set<ThuocDto> getByIdThuongHieu(Integer idThuongHieu , Integer page) {
+        Set<ThuocDto> set = thuocRepo.findByIdThuongHieu(idThuongHieu, PageRequest.of(page, 10)).stream().map(thuocMapper::toDto)
                 .collect(Collectors.toSet());
+        return set;
     }
 
-    public Set<ThuocDto> getByIdNhom(Integer idNhom) {
-        return thuocRepo.findByIdNhom(idNhom).stream().map(thuocMapper::toDto).collect(Collectors.toSet());
+    public Set<ThuocDto> getByIdNhom(Integer idNhom, Integer page) {
+        Set<ThuocDto> set = thuocRepo.findByIdNhom(idNhom, PageRequest.of(page, 10)).stream().map(thuocMapper::toDto)
+                .collect(Collectors.toSet());
+        return set;
     }
 
-    public Set<ThuocDto> getByIdThuongHieuVaIdNhom(Integer idThuongHieu, Integer idNhom) {
-        if (idThuongHieu != null && idNhom != null) {
-            return thuocRepo.findByIdThuongHieuAndIdNhom(idThuongHieu, idNhom).stream().map(thuocMapper::toDto)
+    public Set<ThuocDto> getByIdThuongHieuVaIdNhomPage(Integer idThuongHieu, Integer idNhom,  Integer page) {
+        if (idThuongHieu != -1 && idNhom != -1) {
+            return thuocRepo.findByIdThuongHieuAndIdNhom(idThuongHieu, idNhom, PageRequest.of(page, 10)).stream().map(thuocMapper::toDto)
                     .collect(Collectors.toSet());
-        } else if (idThuongHieu != null) {
-            return thuocRepo.findByIdThuongHieu(idThuongHieu).stream().map(thuocMapper::toDto)
+        } else if (idThuongHieu != -1) {
+            return thuocRepo.findByIdThuongHieu(idThuongHieu, PageRequest.of(page, 10)).stream().map(thuocMapper::toDto)
                     .collect(Collectors.toSet());
-        } else if (idNhom != null) {
-            return thuocRepo.findByIdNhom(idNhom).stream().map(thuocMapper::toDto).collect(Collectors.toSet());
+        } else if (idNhom != -1) {
+            return thuocRepo.findByIdNhom(idNhom, PageRequest.of(page, 10)).stream().map(thuocMapper::toDto).collect(Collectors.toSet());
         }
         return new HashSet<>();
     }

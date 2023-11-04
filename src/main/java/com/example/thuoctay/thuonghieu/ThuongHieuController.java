@@ -47,28 +47,17 @@ public class ThuongHieuController {
 
     @Role({"ADMIN"})
     @PostMapping("/tao")
-    public ResponseEntity<?> taoThuongHieu(@RequestParam(name = "hinhAnh") MultipartFile hinhAnh,
-            @RequestParam(name = "tenthuongHieu") String tenthuongHieu) {
-        String fileName = ResUtils.saveImage(hinhAnh);
-        ThuongHieuDto dto = ThuongHieuDto.builder().id(0).tenThuongHieu(tenthuongHieu).hinhAnh(fileName).build();
+    public ResponseEntity<?> taoThuongHieu(@RequestParam(name = "tenthuongHieu") String tenthuongHieu) {
+        ThuongHieuDto dto = ThuongHieuDto.builder().id(0).tenThuongHieu(tenthuongHieu).build();
         return ResponseEntity.ok().body(thuongHieuService.create(dto));
     }
 
     @Role({"ADMIN"})
     @PutMapping("/sua")
     public ResponseEntity<?> suaThuongHieu(
-            @RequestParam(name = "hinhAnh", required = false) MultipartFile hinhAnh,
             @RequestParam(name = "idThuongHieu") Integer idThuongHieu,
-            @RequestParam(name = "tenThuongHieu") String tenThuongHieu,
-            @RequestParam(name = "tenHinhAnhCu") String tenHinhAnhCu) {
-        if (hinhAnh == null) {
-            ThuongHieuDto dto = ThuongHieuDto.builder().id(idThuongHieu).tenThuongHieu(tenThuongHieu)
-                    .hinhAnh(tenHinhAnhCu).build();
-            return ResponseEntity.ok().body(thuongHieuService.edit(dto));
-        }
-        ResUtils.deletFile(tenHinhAnhCu);
-        String newFileName = ResUtils.saveImage(hinhAnh);
-        ThuongHieuDto dto = ThuongHieuDto.builder().id(idThuongHieu).tenThuongHieu(tenThuongHieu).hinhAnh(newFileName)
+            @RequestParam(name = "tenThuongHieu") String tenThuongHieu) {
+        ThuongHieuDto dto = ThuongHieuDto.builder().id(idThuongHieu).tenThuongHieu(tenThuongHieu)
                 .build();
         return ResponseEntity.ok().body(thuongHieuService.edit(dto));
 

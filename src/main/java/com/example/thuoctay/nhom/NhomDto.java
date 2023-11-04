@@ -12,5 +12,4 @@ import lombok.NoArgsConstructor;
 public class NhomDto {
     private Integer id;
     private String tenNhom;
-    private String hinhAnh;
 }

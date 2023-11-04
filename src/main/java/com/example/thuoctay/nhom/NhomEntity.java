@@ -28,8 +28,4 @@ public class NhomEntity {
     @Column(name = "ten_nhom", columnDefinition = "nvarchar(100)", unique = true, nullable = false)
     private String tenNhom;
 
-    @Column(name = "hinh_anh",columnDefinition = "nvarchar(255)", unique = true, nullable = false)
-    @Nationalized
-    private String hinhAnh;
-
 }

@@ -25,12 +25,12 @@ public class CTDonHangController {
     
     @Role({"ADMIN", "CUSTOMER"})
     @GetMapping("/donhang")
-        public ResponseEntity<?> getByThuoc(@RequestParam(name="idDonHang") Integer idDonHang) {
+        public ResponseEntity<?> getByDonHang(@RequestParam(name="idDonHang") Integer idDonHang) {
         return ResponseEntity.ok().body(ctDonHangService.getByDonHang(idDonHang));
     }
 
     @Role({"CUSTOMER"})
-    @PostMapping("/them")
+    @PostMapping("/tao")
     public ResponseEntity<?> themCtDonHang(@RequestBody Set<CTDonHangDto> dtos) {
         return ResponseEntity.ok().body(ctDonHangService.createAll(dtos));
     }

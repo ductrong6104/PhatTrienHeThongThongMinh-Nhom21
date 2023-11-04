@@ -47,27 +47,17 @@ public class NhomController {
 
     @Role({"ADMIN"})
     @PostMapping("/tao")
-    public ResponseEntity<?> taoNhom(@RequestParam(name = "hinhAnh") MultipartFile hinhAnh,
-            @RequestParam(name = "tenNhom") String tenNhom) {
-        String fileName = ResUtils.saveImage(hinhAnh);
-        NhomDto dto = NhomDto.builder().id(0).tenNhom(tenNhom).hinhAnh(fileName).build();
+    public ResponseEntity<?> taoNhom(@RequestParam(name = "tenNhom") String tenNhom) {
+        NhomDto dto = NhomDto.builder().id(0).tenNhom(tenNhom).build();
         return ResponseEntity.ok().body(nhomService.create(dto));
     }
 
     @Role({"ADMIN"})
     @PutMapping("/sua")
     public ResponseEntity<?> suaNhom(
-        @RequestParam(name = "hinhAnh", required = false) MultipartFile hinhAnh,
             @RequestParam(name = "idNhom") Integer idNhom,
-            @RequestParam(name = "tenNhom") String tenNhom,
-            @RequestParam(name = "tenHinhAnhCu") String tenHinhAnhCu) {
-                if(hinhAnh == null){
-                   NhomDto dto =  NhomDto.builder().id(idNhom).tenNhom(tenNhom).hinhAnh(tenHinhAnhCu).build();
-                   return ResponseEntity.ok().body(nhomService.edit(dto));
-                }
-            ResUtils.deletFile(tenHinhAnhCu);
-            String newFileName = ResUtils.saveImage(hinhAnh);
-            NhomDto dto =  NhomDto.builder().id(idNhom).tenNhom(tenNhom).hinhAnh(newFileName).build();
+            @RequestParam(name = "tenNhom") String tenNhom) {
+            NhomDto dto =  NhomDto.builder().id(idNhom).tenNhom(tenNhom).build();
             return ResponseEntity.ok().body(nhomService.edit(dto));
         
     }

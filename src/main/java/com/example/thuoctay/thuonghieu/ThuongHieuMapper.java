@@ -8,7 +8,6 @@ public class ThuongHieuMapper {
         return ThuongHieuDto.builder()
         .id(entity.getId())
         .tenThuongHieu(entity.getTenThuongHieu())
-        .hinhAnh(entity.getHinhAnh())
         .build();
     }
 
@@ -16,7 +15,6 @@ public class ThuongHieuMapper {
         return ThuongHieuEntity.builder()
         .id(dto.getId())
         .tenThuongHieu(dto.getTenThuongHieu())
-        .hinhAnh(dto.getHinhAnh())
         .build();
     }
 }

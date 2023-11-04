@@ -33,10 +33,10 @@ public class ThuocEntity {
     @Column(name = "hinh_anh", columnDefinition = "nvarchar(255)", nullable = true)
     private String hinhAnh;
 
-    @Column(name = "cong_dung", columnDefinition = "text")
+    @Column(name = "cong_dung", columnDefinition = "nvarchar(MAX)")
     private String congDung;
 
-    @Column(name = "hd_su_dung", columnDefinition = "text")
+    @Column(name = "hd_su_dung", columnDefinition = "nvarchar(MAX)")
     private String hdSuDung;
 
     @Column(name = "kinh_doanh")

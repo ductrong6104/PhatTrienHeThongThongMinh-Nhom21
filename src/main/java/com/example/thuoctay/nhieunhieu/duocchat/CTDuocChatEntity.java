@@ -35,6 +35,6 @@ public class CTDuocChatEntity {
     private Integer idThuoc;
 
     @Column(name = "ham_luong", nullable = true)
-    private float hamLuong;
+    private String hamLuong;
 
 }

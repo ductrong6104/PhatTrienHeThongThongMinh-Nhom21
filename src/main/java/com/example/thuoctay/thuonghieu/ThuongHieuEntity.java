@@ -25,7 +25,4 @@ public class ThuongHieuEntity {
 
     @Column(name = "ten_thuong_hieu", columnDefinition = "nvarchar(100)", unique = true, nullable = false)
     private String tenThuongHieu;
-
-    @Column(name = "hinh_anh", columnDefinition = "nvarchar(255)", unique = true, nullable = false)
-    private String hinhAnh;
 }

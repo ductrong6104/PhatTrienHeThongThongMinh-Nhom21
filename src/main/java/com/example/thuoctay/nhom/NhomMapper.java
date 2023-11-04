@@ -8,7 +8,6 @@ public class NhomMapper {
         return NhomDto.builder()
                 .id(entity.getId())
                 .tenNhom(entity.getTenNhom())
-                .hinhAnh(entity.getHinhAnh())
                 .build();
     }
 
@@ -16,7 +15,6 @@ public class NhomMapper {
         return NhomEntity.builder()
                 .id(dto.getId())
                 .tenNhom(dto.getTenNhom())
-                .hinhAnh(dto.getHinhAnh())
                 .build();
     }
 }
