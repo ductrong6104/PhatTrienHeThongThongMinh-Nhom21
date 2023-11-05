@@ -26,6 +26,7 @@ public class AppRunnerController {
 
     @GetMapping
     public ResponseEntity<?> runOrCheckExternalApp() {
+        System.out.println("\n\nDIR: "+ currentDirectory);
         System.out.println("\nStatus: " + status);
         if (status == 1) {
             return ResponseEntity.ok().body("Ứng dụng đang chạy.");

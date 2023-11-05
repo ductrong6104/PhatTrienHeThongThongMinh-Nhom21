@@ -10,7 +10,7 @@ public class FrontEndController {
         System.out.println("\n\n\nADMIN\n\n\n");
         return "admin";
     }
-    @GetMapping("/customer")
+    @GetMapping("/")
     public String customerPage(){
         System.out.println("\n\n\nADMIN\n\n\n");
         return "customer";
