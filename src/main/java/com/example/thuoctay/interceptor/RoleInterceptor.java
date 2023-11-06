@@ -23,7 +23,6 @@ public class RoleInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             Role roleAnnotation = handlerMethod.getMethod().getAnnotation(Role.class);
             
@@ -44,15 +43,15 @@ public class RoleInterceptor implements HandlerInterceptor {
                 if (taiKhoanNhanVienDto != null) {
                     String taiKhoanNhanVienRole = taiKhoanNhanVienDto.getRole();
                     for (String requiredRole : requiredRoles) {
-                        if (requiredRole.equals(taiKhoanNhanVienRole)) {
-                            return true;
-                        }
+                        // if (requiredRole.equals(taiKhoanNhanVienRole)) {
+                        //     return true;
+                        // }
+                        System.out.println(taiKhoanNhanVienRole + "____" + requiredRole);
                     }
                 }
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                 return false;
             }
-        }
         return true;
     }
 }

@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.example.thuoctay.anotation.Role;
-import com.example.thuoctay.utils.ResUtils;
 
 import lombok.RequiredArgsConstructor;
 
