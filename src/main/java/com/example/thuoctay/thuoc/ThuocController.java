@@ -18,6 +18,8 @@ import com.example.thuoctay.utils.ResUtils;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/thuoc")
@@ -98,5 +100,18 @@ public class ThuocController {
         ResUtils.deletFile(tenHinhAnhCu);
         return ResponseEntity.ok().body(fileName);
     }
+
+    @GetMapping("/timKiemTenThuoc")
+    public ResponseEntity<?> findByTenThuocContaining(@RequestParam(name = "tenThuoc") String ten, @RequestParam(name = "page") Integer page) {
+        List<ThuocDto> dto = thuocService.findByTenThuocContaining(ten, page);
+        return ResponseEntity.ok().body(dto);
+    }
+
+    @GetMapping("/timKiemTenThuocTheoDeXuat")
+    public ResponseEntity<?> findByRecommendTenThuoc(@RequestParam(name = "tenThuoc") String ten, @RequestParam(name = "page") Integer page) {
+        List<ThuocDto> dto = thuocService.findByRecommendTenThuoc(ten, page);
+        return ResponseEntity.ok().body(dto);
+    }
+
 
 }

@@ -1,8 +1,10 @@
 package com.example.thuoctay.thuonghieu;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.example.thuoctay.thuoc.ThuocDto;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -66,5 +68,11 @@ public class ThuongHieuService {
             return thuongHieuMapper.toDto(entity);
         }
         return null;
+    }
+
+    public List<ThuongHieuDto> findByTenThuongHieuContaining(String ten, Integer page){
+        List<ThuongHieuDto> set = thuongHieuRepo.findByTenThuongHieuContaining(ten, PageRequest.of(page, 10)).stream().map(thuongHieuMapper::toDto)
+                .collect(Collectors.toList());
+        return set;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.thuoctay.thuoc;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -104,4 +105,32 @@ public class ThuocService {
         }
         return null;
     }
+
+    public List<ThuocDto> findByTenThuocContaining(String ten, Integer page){
+        List<ThuocDto> set = thuocRepo.findByTenThuocContaining(ten, PageRequest.of(page, 10)).stream().map(thuocMapper::toDto)
+                .collect(Collectors.toList());
+        return set;
+    }
+
+    public List<ThuocDto> findByRecommendTenThuoc(String ten, Integer page) {
+        List<ThuocDto> set = thuocRepo.findByTenThuocContaining(ten, PageRequest.of(page, 5)).stream().map(thuocMapper::toDto)
+                .collect(Collectors.toList());
+        for (ThuocDto t : set
+        ) {
+            String tenThuoc = t.getTenThuoc();
+            String resultTenThuoc = "";
+            Integer positionTimThay = tenThuoc.indexOf(ten) + ten.length();
+            resultTenThuoc = resultTenThuoc + ten + tenThuoc.charAt(positionTimThay);
+            positionTimThay += 1;
+            while (positionTimThay < tenThuoc.length() && tenThuoc.charAt(positionTimThay) != ' ') {
+                resultTenThuoc += tenThuoc.charAt(positionTimThay);
+                positionTimThay += 1;
+            }
+            t.setTenThuoc(resultTenThuoc);
+        }
+
+
+            return set;
+        }
+
 }

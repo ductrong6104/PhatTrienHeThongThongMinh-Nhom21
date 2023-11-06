@@ -1,5 +1,6 @@
 package com.example.thuoctay.thuonghieu;
 
+import com.example.thuoctay.thuoc.ThuocDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +17,8 @@ import com.example.thuoctay.anotation.Role;
 import com.example.thuoctay.utils.ResUtils;
 
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/thuonghieu")
@@ -67,5 +70,11 @@ public class ThuongHieuController {
     @DeleteMapping("/xoa")
     public ResponseEntity<?> xoaThuongHieu(@RequestParam(name = "idThuongHieu") Integer id) {
         return ResponseEntity.ok().body(thuongHieuService.delete(id));
+    }
+
+    @GetMapping("/timKiemTenThuongHieu")
+    public ResponseEntity<?> findByTenThuongHieuContaining(@RequestParam(name = "tenThuongHieu") String ten, @RequestParam(name = "page") Integer page) {
+        List<ThuongHieuDto> dto = thuongHieuService.findByTenThuongHieuContaining(ten,page);
+        return ResponseEntity.ok().body(dto);
     }
 }
