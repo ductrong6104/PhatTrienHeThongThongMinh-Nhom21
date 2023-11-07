@@ -21,7 +21,7 @@ cursor = cnxn.cursor()
 
 def read_data_from_sql():
 
-    sql_query = '''select top 20 t.id, ten_thuoc, cong_dung, count(ctdc.id_duoc_chat) as soLuongDuocChat, sum(ctdc.id_duoc_chat) as tongTrongSoDuocChat from
+    sql_query = '''select top 100 t.id, ten_thuoc, cong_dung, count(ctdc.id_duoc_chat) as soLuongDuocChat, sum(ctdc.id_duoc_chat) as tongTrongSoDuocChat from
 
 	(select id_duoc_chat, id_thuoc from ct_duoc_chat) ctdc,
 	(select id, ten_thuoc, cong_dung from thuoc) t
